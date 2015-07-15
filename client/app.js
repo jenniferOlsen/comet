@@ -1,3 +1,7 @@
+Meteor.startup(function() {
+  Session.set('channel', 'general');
+});
+
 Template.messages.helpers({
  messages: Messages.find({})
 });
@@ -23,5 +27,37 @@ Template.registerHelper("timestampToTime", function (timestamp) {
   return hours + ':' + minutes.substr(minutes.length-2);
 });
 
-Meteor.subscribe('messages');
+Template.listings.helpers({
+  channels: function() {
+    return Channels.find();
+  }
+});
+
+Template.channel.events({
+  'click .channel': function (e){
+    Session.set('channel', this.name);
+  }
+});
+
+Template.channel.helpers({
+  active: function() {
+    if (Session.get('channel') === this.name) {
+      return 'active';
+    } else {
+      return '';
+    }
+  }
+});
+Template.registerHelper('currentChannel', function() {
+  return Session.get('channel');
+})
+
+Template.messages.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('messages', Session.get('channel'));
+  });
+});
+
 Meteor.subscribe('allUsernames');
+Meteor.subscribe('channels');

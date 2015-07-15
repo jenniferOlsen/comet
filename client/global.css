@@ -196,7 +196,7 @@ body {
   -moz-border-radius-bottomright: 0.25rem;
   -webkit-border-bottom-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
-  margin-right: 17px;
+  padding-right: 17px;
   color: #ffffff;
   padding-left: 1rem;
 }

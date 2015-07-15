@@ -4,7 +4,8 @@ Meteor.startup(function() {
       return Fake.sentence();
     },
     user: "Anonymous",
-    timestamp: Date.now()
+    timestamp: Date.now(),
+    channel: "general"
   });
   // remove all messages before seeding
   Messages.remove({});
@@ -14,4 +15,12 @@ Meteor.startup(function() {
       Factory.create('message');
     });
   }
+
+  Channels.remove({});
+  Channels.insert({
+    name: "general"
+  });
+  Channels.insert({
+    name: "random"
+  });
 });

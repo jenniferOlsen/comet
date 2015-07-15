@@ -4,4 +4,4 @@ Meteor.methods({
     message.user = Meteor.userId();
     Messages.insert(message);
   }
-})
+});
