@@ -201,6 +201,11 @@ body {
   padding-left: 1rem;
 }
 
+.channel_name {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* line 35, ../tests/sass/components/_listings.scss */
 .unread {
   color: #ffffff;

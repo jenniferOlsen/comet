@@ -1,7 +1,3 @@
-Meteor.startup(function() {
-  Session.set('channel', 'general');
-});
-
 Template.messages.helpers({
  messages: Messages.find({})
 });
@@ -30,12 +26,6 @@ Template.registerHelper("timestampToTime", function (timestamp) {
 Template.listings.helpers({
   channels: function() {
     return Channels.find();
-  }
-});
-
-Template.channel.events({
-  'click .channel': function (e){
-    Session.set('channel', this.name);
   }
 });
 
